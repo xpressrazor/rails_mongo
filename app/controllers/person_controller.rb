@@ -15,26 +15,32 @@ class PersonController < ApplicationController
   end
 
   def update
+    @person = Person.find(params[:id])
+
+    if @person.update(person_params)
+      render action:"index"
+    else
+      render 'edit'
+    end
   end
 
   def edit
+    @person = Person.find(params[:id])
   end
 
   def destroy
+    @person = Person.find(params[:id])
+    @person.destroy
+
+    render action:"index"
   end
 
   def index
   	@persons = Person.all
-
-    puts("Printing something\n===============================================")
-    @persons.each do |p|
-      puts("Name: #{p.name}, Hobby: #{p.hobby}")
-    end
-
-    return @persons
   end
 
   def show
+    @person = Person.find(params[:id])
   end
 
   private
