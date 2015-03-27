@@ -1,6 +1,6 @@
 <h1>Create new Person</h1>
 
-<%= form_for(:person, :url => {:action => 'create'}) do |p| %>
+<%= form_for(@person, :url => {:action => 'create'}) do |p| %>
 <p>
 	<%= p.label :name %><br>
 	<%= p.text_field :name %>

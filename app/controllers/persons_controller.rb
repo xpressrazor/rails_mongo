@@ -1,13 +1,26 @@
-class PersonController < ApplicationController
+class PersonsController < ApplicationController
+
+  def index
+    @persons = Person.all
+  end
+
+  def show
+    @person = Person.find(params[:id])
+  end
+
   def new
-  	person = Person.new
+  	@person = Person.new
+  end
+
+  def edit
+    @person = Person.find(params[:id])
   end
 
   def create
   	@person = Person.new(person_params)
 
   	if @person.save
-            render action:"index"
+            redirect_to @person
     else
         render 'new'
     end
@@ -18,29 +31,17 @@ class PersonController < ApplicationController
     @person = Person.find(params[:id])
 
     if @person.update(person_params)
-      render action:"index"
+      redirect_to @person
     else
       render 'edit'
     end
-  end
-
-  def edit
-    @person = Person.find(params[:id])
   end
 
   def destroy
     @person = Person.find(params[:id])
     @person.destroy
 
-    render action:"index"
-  end
-
-  def index
-  	@persons = Person.all
-  end
-
-  def show
-    @person = Person.find(params[:id])
+    redirect_to persons_path
   end
 
   private
