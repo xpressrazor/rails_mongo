@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :persons do
     resources :comments
   end
+
+  resources :events
  
 
   # The priority is based upon order of creation: first created -> highest priority.

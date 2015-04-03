@@ -1,0 +1,15 @@
+<h1>Event edit</h1>
+
+<%= form_for(@event, :url => {:action => 'update'}) do |p| %>
+    <p>
+      <%= p.label :name %><br>
+      <%= p.text_field :name %>
+    </p>
+    <p>
+      <%= p.label :location%><br>
+      <%= p.text_field :location%>
+    </p>
+    <p>
+      <%= submit_tag("Update Event") %>
+    </p>
+<% end %>
